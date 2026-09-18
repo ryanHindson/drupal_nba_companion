@@ -1,0 +1,14 @@
+services:
+  python:
+    container_name: "ddev-${DDEV_SITENAME}-python"
+    image: "ddev-${DDEV_SITENAME}-python-built"
+    build:
+      context: ../python-service
+    restart: "no"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: ${DDEV_APPROOT}
+    expose:
+      - "8000"
+    volumes:
+      - "../python-service:/app:ro"

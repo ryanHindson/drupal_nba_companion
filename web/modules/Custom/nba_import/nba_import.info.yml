@@ -1,0 +1,7 @@
+name: NBA Import
+type: module
+description: Imports NBA data from the Python service.
+package: Custom
+core_version_requirement: ^11
+dependencies:
+  - drupal:node

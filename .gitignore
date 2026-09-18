@@ -1,0 +1,45 @@
+# Composer dependencies and Drupal packages managed by Composer
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+
+# Drupal runtime files and local settings
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/*settings*.php
+!/web/sites/*/default.settings.php
+/web/sites/*/*services*.yml
+!/web/sites/*/default.services.yml
+
+# DDEV-generated configuration (keep .ddev/config.yaml and docker-compose.python.yaml)
+/.ddev/.gitignore
+/.ddev/.ddev-docker-*.yaml
+/.ddev/.dbimageBuild/
+/.ddev/.webimageBuild/
+/.ddev/.homeadditions/
+/.ddev/db_snapshots/
+/.ddev/config.local.yaml
+/.ddev/config.*.local.yaml
+
+# Python environments and caches
+/.venv/
+/python-service/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+
+# Local secrets and operating-system files
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+.DS_Store
+Thumbs.db
+desktop.ini
