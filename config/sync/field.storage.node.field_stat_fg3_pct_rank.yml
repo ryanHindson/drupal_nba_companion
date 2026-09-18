@@ -1,0 +1,20 @@
+uuid: 99d4d6eb-df2b-438c-9a21-99841ce85aa5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_stat_fg3_pct_rank
+field_name: field_stat_fg3_pct_rank
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

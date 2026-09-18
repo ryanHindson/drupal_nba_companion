@@ -1,0 +1,23 @@
+uuid: f9846260-1de4-4a3f-a9dc-25fe63c332cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_l
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_l
+field_name: field_ps_l
+entity_type: node
+bundle: player_season_stats
+label: L
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: 29199058-d221-4067-bc93-de87c6c5f96b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_min
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_min
+field_name: field_ps_min
+entity_type: node
+bundle: player_season_stats
+label: MIN
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

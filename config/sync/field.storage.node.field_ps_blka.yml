@@ -1,0 +1,20 @@
+uuid: 52a707ad-dc02-400d-af23-e8eb0aed37c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_blka
+field_name: field_ps_blka
+entity_type: node
+type: decimal
+settings:
+  precision: 12
+  scale: 3
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

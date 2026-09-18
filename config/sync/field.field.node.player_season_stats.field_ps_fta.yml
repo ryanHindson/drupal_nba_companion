@@ -1,0 +1,23 @@
+uuid: 5c1b934b-6cc0-44c4-9d27-a2c3e3d4342e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_fta
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_fta
+field_name: field_ps_fta
+entity_type: node
+bundle: player_season_stats
+label: FTA
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

@@ -1,0 +1,20 @@
+uuid: 8c1de6b5-5abb-4f22-9575-55d0e4664bf8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_pts
+field_name: field_ps_pts
+entity_type: node
+type: decimal
+settings:
+  precision: 12
+  scale: 3
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

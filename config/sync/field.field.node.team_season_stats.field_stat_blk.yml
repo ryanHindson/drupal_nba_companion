@@ -1,0 +1,23 @@
+uuid: 1447d7a4-c450-4478-b373-40c01daa7df0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_blk
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_blk
+field_name: field_stat_blk
+entity_type: node
+bundle: team_season_stats
+label: BLK
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

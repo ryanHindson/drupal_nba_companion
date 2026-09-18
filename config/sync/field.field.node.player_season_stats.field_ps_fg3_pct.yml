@@ -1,0 +1,23 @@
+uuid: 9f854505-f04d-498d-b8c3-0e0dad60d6b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_fg3_pct
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_fg3_pct
+field_name: field_ps_fg3_pct
+entity_type: node
+bundle: player_season_stats
+label: 'FG3 PCT'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

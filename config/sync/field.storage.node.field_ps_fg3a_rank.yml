@@ -1,0 +1,20 @@
+uuid: a1950403-2cda-4853-9337-fb1f14802f75
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_fg3a_rank
+field_name: field_ps_fg3a_rank
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

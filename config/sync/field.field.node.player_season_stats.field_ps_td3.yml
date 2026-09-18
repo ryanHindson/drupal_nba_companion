@@ -1,0 +1,23 @@
+uuid: 0ae3e6de-387e-433e-97da-95f7eaa4829a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_td3
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_td3
+field_name: field_ps_td3
+entity_type: node
+bundle: player_season_stats
+label: TD3
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: 37b6c22a-0153-4136-a4b5-9d1028747d46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_gp
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_gp
+field_name: field_stat_gp
+entity_type: node
+bundle: team_season_stats
+label: GP
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

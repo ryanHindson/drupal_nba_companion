@@ -1,0 +1,23 @@
+uuid: ca564a87-314d-4352-91b4-d882f01c3b38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_fgm
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_fgm
+field_name: field_stat_fgm
+entity_type: node
+bundle: team_season_stats
+label: FGM
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

@@ -1,0 +1,23 @@
+uuid: 12117106-3bbb-4331-b887-24b4e506cd2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_fg3m
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_fg3m
+field_name: field_stat_fg3m
+entity_type: node
+bundle: team_season_stats
+label: FG3M
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

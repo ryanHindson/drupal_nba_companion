@@ -1,0 +1,23 @@
+uuid: 553fcbb0-0212-4ff9-9207-522f58ff31a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_fg_pct_rank
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_fg_pct_rank
+field_name: field_ps_fg_pct_rank
+entity_type: node
+bundle: player_season_stats
+label: 'FG PCT RANK'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

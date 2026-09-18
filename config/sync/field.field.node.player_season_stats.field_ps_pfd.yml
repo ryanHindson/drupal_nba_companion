@@ -1,0 +1,23 @@
+uuid: 3664a719-45d3-4401-8376-8cd587083ec8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_pfd
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_pfd
+field_name: field_ps_pfd
+entity_type: node
+bundle: player_season_stats
+label: PFD
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

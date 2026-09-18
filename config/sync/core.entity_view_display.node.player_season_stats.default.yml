@@ -1,0 +1,688 @@
+uuid: 1b7e16d7-b023-4a80-a0ca-6dfe866d5ac6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.player_season_stats.field_player_season
+    - field.field.node.player_season_stats.field_player_season_type
+    - field.field.node.player_season_stats.field_ps_age
+    - field.field.node.player_season_stats.field_ps_ast
+    - field.field.node.player_season_stats.field_ps_ast_rank
+    - field.field.node.player_season_stats.field_ps_blk
+    - field.field.node.player_season_stats.field_ps_blk_rank
+    - field.field.node.player_season_stats.field_ps_blka
+    - field.field.node.player_season_stats.field_ps_blka_rank
+    - field.field.node.player_season_stats.field_ps_dd2
+    - field.field.node.player_season_stats.field_ps_dd2_rank
+    - field.field.node.player_season_stats.field_ps_dreb
+    - field.field.node.player_season_stats.field_ps_dreb_rank
+    - field.field.node.player_season_stats.field_ps_fg3_pct
+    - field.field.node.player_season_stats.field_ps_fg3_pct_rank
+    - field.field.node.player_season_stats.field_ps_fg3a
+    - field.field.node.player_season_stats.field_ps_fg3a_rank
+    - field.field.node.player_season_stats.field_ps_fg3m
+    - field.field.node.player_season_stats.field_ps_fg3m_rank
+    - field.field.node.player_season_stats.field_ps_fg_pct
+    - field.field.node.player_season_stats.field_ps_fg_pct_rank
+    - field.field.node.player_season_stats.field_ps_fga
+    - field.field.node.player_season_stats.field_ps_fga_rank
+    - field.field.node.player_season_stats.field_ps_fgm
+    - field.field.node.player_season_stats.field_ps_fgm_rank
+    - field.field.node.player_season_stats.field_ps_ft_pct
+    - field.field.node.player_season_stats.field_ps_ft_pct_rank
+    - field.field.node.player_season_stats.field_ps_fta
+    - field.field.node.player_season_stats.field_ps_fta_rank
+    - field.field.node.player_season_stats.field_ps_ftm
+    - field.field.node.player_season_stats.field_ps_ftm_rank
+    - field.field.node.player_season_stats.field_ps_gp
+    - field.field.node.player_season_stats.field_ps_gp_rank
+    - field.field.node.player_season_stats.field_ps_l
+    - field.field.node.player_season_stats.field_ps_l_rank
+    - field.field.node.player_season_stats.field_ps_min
+    - field.field.node.player_season_stats.field_ps_min_rank
+    - field.field.node.player_season_stats.field_ps_nba_fantasy_pts
+    - field.field.node.player_season_stats.field_ps_nba_fantasy_pts_rank
+    - field.field.node.player_season_stats.field_ps_oreb
+    - field.field.node.player_season_stats.field_ps_oreb_rank
+    - field.field.node.player_season_stats.field_ps_pf
+    - field.field.node.player_season_stats.field_ps_pf_rank
+    - field.field.node.player_season_stats.field_ps_pfd
+    - field.field.node.player_season_stats.field_ps_pfd_rank
+    - field.field.node.player_season_stats.field_ps_plus_minus
+    - field.field.node.player_season_stats.field_ps_plus_minus_rank
+    - field.field.node.player_season_stats.field_ps_pts
+    - field.field.node.player_season_stats.field_ps_pts_rank
+    - field.field.node.player_season_stats.field_ps_reb
+    - field.field.node.player_season_stats.field_ps_reb_rank
+    - field.field.node.player_season_stats.field_ps_stl
+    - field.field.node.player_season_stats.field_ps_stl_rank
+    - field.field.node.player_season_stats.field_ps_td3
+    - field.field.node.player_season_stats.field_ps_td3_rank
+    - field.field.node.player_season_stats.field_ps_tov
+    - field.field.node.player_season_stats.field_ps_tov_rank
+    - field.field.node.player_season_stats.field_ps_w
+    - field.field.node.player_season_stats.field_ps_w_pct
+    - field.field.node.player_season_stats.field_ps_w_pct_rank
+    - field.field.node.player_season_stats.field_ps_w_rank
+    - field.field.node.player_season_stats.field_stats_player
+    - node.type.player_season_stats
+  module:
+    - user
+id: node.player_season_stats.default
+targetEntityType: node
+bundle: player_season_stats
+mode: default
+content:
+  field_player_season:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_player_season_type:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_ps_age:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_ps_ast:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_ps_ast_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_ps_blk:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_ps_blk_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_ps_blka:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_ps_blka_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_ps_dd2:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_ps_dd2_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_ps_dreb:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_ps_dreb_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_ps_fg3_pct:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_ps_fg3_pct_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_ps_fg3a:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_ps_fg3a_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_ps_fg3m:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_ps_fg3m_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  field_ps_fg_pct:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  field_ps_fg_pct_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 26
+    region: content
+  field_ps_fga:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_ps_fga_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_ps_fgm:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  field_ps_fgm_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_ps_ft_pct:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 31
+    region: content
+  field_ps_ft_pct_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 32
+    region: content
+  field_ps_fta:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 27
+    region: content
+  field_ps_fta_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 28
+    region: content
+  field_ps_ftm:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 29
+    region: content
+  field_ps_ftm_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 30
+    region: content
+  field_ps_gp:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 33
+    region: content
+  field_ps_gp_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 34
+    region: content
+  field_ps_l:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 35
+    region: content
+  field_ps_l_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 36
+    region: content
+  field_ps_min:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 37
+    region: content
+  field_ps_min_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 38
+    region: content
+  field_ps_nba_fantasy_pts:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 39
+    region: content
+  field_ps_nba_fantasy_pts_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 40
+    region: content
+  field_ps_oreb:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 41
+    region: content
+  field_ps_oreb_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 42
+    region: content
+  field_ps_pf:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 43
+    region: content
+  field_ps_pf_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 46
+    region: content
+  field_ps_pfd:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 44
+    region: content
+  field_ps_pfd_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 45
+    region: content
+  field_ps_plus_minus:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 48
+    region: content
+  field_ps_plus_minus_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 47
+    region: content
+  field_ps_pts:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 49
+    region: content
+  field_ps_pts_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_ps_reb:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 51
+    region: content
+  field_ps_reb_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 52
+    region: content
+  field_ps_stl:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 53
+    region: content
+  field_ps_stl_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 54
+    region: content
+  field_ps_td3:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 55
+    region: content
+  field_ps_td3_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 56
+    region: content
+  field_ps_tov:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 57
+    region: content
+  field_ps_tov_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 58
+    region: content
+  field_ps_w:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 59
+    region: content
+  field_ps_w_pct:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 60
+    region: content
+  field_ps_w_pct_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 61
+    region: content
+  field_ps_w_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 62
+    region: content
+  field_stats_player:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

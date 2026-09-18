@@ -1,0 +1,23 @@
+uuid: a1c12748-3ab2-4d2e-a15c-456168ba212e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_plus_minus_rank
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_plus_minus_rank
+field_name: field_ps_plus_minus_rank
+entity_type: node
+bundle: player_season_stats
+label: 'PLUS MINUS RANK'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: e849c665-cb7f-42f4-9e24-434a634317f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_year_founded
+    - node.type.team
+id: node.team.field_year_founded
+field_name: field_year_founded
+entity_type: node
+bundle: team
+label: 'Year Founded'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: 7e2ee4dd-9885-45aa-88fe-02f3be2a8425
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_pf_rank
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_pf_rank
+field_name: field_stat_pf_rank
+entity_type: node
+bundle: team_season_stats
+label: 'PF RANK'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

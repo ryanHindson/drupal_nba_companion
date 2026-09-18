@@ -1,0 +1,20 @@
+uuid: f1f91d8d-3855-4245-834a-8f5ed65f62d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_plus_minus_rank
+field_name: field_ps_plus_minus_rank
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

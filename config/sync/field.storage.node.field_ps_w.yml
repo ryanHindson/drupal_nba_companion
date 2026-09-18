@@ -1,0 +1,20 @@
+uuid: 204482ea-294b-4460-a99f-6e5233c4b7f7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_w
+field_name: field_ps_w
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

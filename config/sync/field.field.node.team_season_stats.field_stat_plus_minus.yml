@@ -1,0 +1,23 @@
+uuid: ccb204a2-51ea-4107-81f7-6f2783c4fdb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_plus_minus
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_plus_minus
+field_name: field_stat_plus_minus
+entity_type: node
+bundle: team_season_stats
+label: 'PLUS MINUS'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

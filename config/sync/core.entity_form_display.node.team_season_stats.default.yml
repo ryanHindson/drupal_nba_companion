@@ -1,0 +1,183 @@
+uuid: ddad035f-069a-438d-8065-c45ed46b3bc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.team_season_stats.field_season
+    - field.field.node.team_season_stats.field_stat_ast
+    - field.field.node.team_season_stats.field_stat_ast_rank
+    - field.field.node.team_season_stats.field_stat_blk
+    - field.field.node.team_season_stats.field_stat_blk_rank
+    - field.field.node.team_season_stats.field_stat_blka
+    - field.field.node.team_season_stats.field_stat_blka_rank
+    - field.field.node.team_season_stats.field_stat_dreb
+    - field.field.node.team_season_stats.field_stat_dreb_rank
+    - field.field.node.team_season_stats.field_stat_fg3_pct
+    - field.field.node.team_season_stats.field_stat_fg3_pct_rank
+    - field.field.node.team_season_stats.field_stat_fg3a
+    - field.field.node.team_season_stats.field_stat_fg3a_rank
+    - field.field.node.team_season_stats.field_stat_fg3m
+    - field.field.node.team_season_stats.field_stat_fg3m_rank
+    - field.field.node.team_season_stats.field_stat_fg_pct
+    - field.field.node.team_season_stats.field_stat_fg_pct_rank
+    - field.field.node.team_season_stats.field_stat_fga
+    - field.field.node.team_season_stats.field_stat_fga_rank
+    - field.field.node.team_season_stats.field_stat_fgm
+    - field.field.node.team_season_stats.field_stat_fgm_rank
+    - field.field.node.team_season_stats.field_stat_ft_pct
+    - field.field.node.team_season_stats.field_stat_ft_pct_rank
+    - field.field.node.team_season_stats.field_stat_fta
+    - field.field.node.team_season_stats.field_stat_fta_rank
+    - field.field.node.team_season_stats.field_stat_ftm
+    - field.field.node.team_season_stats.field_stat_ftm_rank
+    - field.field.node.team_season_stats.field_stat_gp
+    - field.field.node.team_season_stats.field_stat_gp_rank
+    - field.field.node.team_season_stats.field_stat_l
+    - field.field.node.team_season_stats.field_stat_l_rank
+    - field.field.node.team_season_stats.field_stat_min
+    - field.field.node.team_season_stats.field_stat_min_rank
+    - field.field.node.team_season_stats.field_stat_oreb
+    - field.field.node.team_season_stats.field_stat_oreb_rank
+    - field.field.node.team_season_stats.field_stat_pf
+    - field.field.node.team_season_stats.field_stat_pf_rank
+    - field.field.node.team_season_stats.field_stat_pfd
+    - field.field.node.team_season_stats.field_stat_pfd_rank
+    - field.field.node.team_season_stats.field_stat_plus_minus
+    - field.field.node.team_season_stats.field_stat_plus_minus_rank
+    - field.field.node.team_season_stats.field_stat_pts
+    - field.field.node.team_season_stats.field_stat_pts_rank
+    - field.field.node.team_season_stats.field_stat_reb
+    - field.field.node.team_season_stats.field_stat_reb_rank
+    - field.field.node.team_season_stats.field_stat_stl
+    - field.field.node.team_season_stats.field_stat_stl_rank
+    - field.field.node.team_season_stats.field_stat_tov
+    - field.field.node.team_season_stats.field_stat_tov_rank
+    - field.field.node.team_season_stats.field_stat_w
+    - field.field.node.team_season_stats.field_stat_w_pct
+    - field.field.node.team_season_stats.field_stat_w_pct_rank
+    - field.field.node.team_season_stats.field_stat_w_rank
+    - field.field.node.team_season_stats.field_team
+    - node.type.team_season_stats
+  module:
+    - path
+id: node.team_season_stats.default
+targetEntityType: node
+bundle: team_season_stats
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_season:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_stat_w:
+    type: number
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_team:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_stat_ast: true
+  field_stat_ast_rank: true
+  field_stat_blk: true
+  field_stat_blk_rank: true
+  field_stat_blka: true
+  field_stat_blka_rank: true
+  field_stat_dreb: true
+  field_stat_dreb_rank: true
+  field_stat_fg3_pct: true
+  field_stat_fg3_pct_rank: true
+  field_stat_fg3a: true
+  field_stat_fg3a_rank: true
+  field_stat_fg3m: true
+  field_stat_fg3m_rank: true
+  field_stat_fg_pct: true
+  field_stat_fg_pct_rank: true
+  field_stat_fga: true
+  field_stat_fga_rank: true
+  field_stat_fgm: true
+  field_stat_fgm_rank: true
+  field_stat_ft_pct: true
+  field_stat_ft_pct_rank: true
+  field_stat_fta: true
+  field_stat_fta_rank: true
+  field_stat_ftm: true
+  field_stat_ftm_rank: true
+  field_stat_gp: true
+  field_stat_gp_rank: true
+  field_stat_l: true
+  field_stat_l_rank: true
+  field_stat_min: true
+  field_stat_min_rank: true
+  field_stat_oreb: true
+  field_stat_oreb_rank: true
+  field_stat_pf: true
+  field_stat_pf_rank: true
+  field_stat_pfd: true
+  field_stat_pfd_rank: true
+  field_stat_plus_minus: true
+  field_stat_plus_minus_rank: true
+  field_stat_pts: true
+  field_stat_pts_rank: true
+  field_stat_reb: true
+  field_stat_reb_rank: true
+  field_stat_stl: true
+  field_stat_stl_rank: true
+  field_stat_tov: true
+  field_stat_tov_rank: true
+  field_stat_w_pct: true
+  field_stat_w_pct_rank: true
+  field_stat_w_rank: true
+  promote: true
+  sticky: true

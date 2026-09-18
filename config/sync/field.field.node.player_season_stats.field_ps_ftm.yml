@@ -1,0 +1,23 @@
+uuid: f34960b1-db5a-47eb-b6f7-58209020f547
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_ftm
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_ftm
+field_name: field_ps_ftm
+entity_type: node
+bundle: player_season_stats
+label: FTM
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

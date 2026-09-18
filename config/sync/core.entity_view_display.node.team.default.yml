@@ -1,0 +1,89 @@
+uuid: a0f2f205-0bc5-46f9-90fe-dfbbef0b94e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.team.field_abbreviation
+    - field.field.node.team.field_city
+    - field.field.node.team.field_logo
+    - field.field.node.team.field_nba_team_id
+    - field.field.node.team.field_nickname
+    - field.field.node.team.field_state
+    - field.field.node.team.field_year_founded
+    - node.type.team
+  module:
+    - user
+id: node.team.default
+targetEntityType: node
+bundle: team
+mode: default
+content:
+  field_abbreviation:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_city:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_logo:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_nba_team_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_nickname:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_state:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_year_founded:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

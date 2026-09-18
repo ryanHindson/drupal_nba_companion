@@ -1,0 +1,23 @@
+uuid: e8fd2b72-790f-4a1c-96a3-df2fcc173896
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_ft_pct
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_ft_pct
+field_name: field_ps_ft_pct
+entity_type: node
+bundle: player_season_stats
+label: 'FT PCT'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

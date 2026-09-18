@@ -1,0 +1,20 @@
+uuid: cc2dc49b-4a2f-4be9-9f37-4da8680fe234
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_l
+field_name: field_ps_l
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

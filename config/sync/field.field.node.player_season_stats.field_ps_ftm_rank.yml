@@ -1,0 +1,23 @@
+uuid: d06726df-307f-4ad2-af7c-60ce834a1dfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_ftm_rank
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_ftm_rank
+field_name: field_ps_ftm_rank
+entity_type: node
+bundle: player_season_stats
+label: 'FTM RANK'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

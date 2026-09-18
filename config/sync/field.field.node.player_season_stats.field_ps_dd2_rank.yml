@@ -1,0 +1,23 @@
+uuid: 4f93ce24-bf4c-405b-a862-24a4bad31e34
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_dd2_rank
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_dd2_rank
+field_name: field_ps_dd2_rank
+entity_type: node
+bundle: player_season_stats
+label: 'DD2 RANK'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

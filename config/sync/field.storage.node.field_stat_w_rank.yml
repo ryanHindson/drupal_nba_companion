@@ -1,0 +1,20 @@
+uuid: 83310939-9e86-469d-8032-a58d2e860d4d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_stat_w_rank
+field_name: field_stat_w_rank
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

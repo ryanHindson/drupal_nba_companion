@@ -1,0 +1,23 @@
+uuid: 910f8684-97ee-429f-9831-a0c901433916
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_tov
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_tov
+field_name: field_stat_tov
+entity_type: node
+bundle: team_season_stats
+label: TOV
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

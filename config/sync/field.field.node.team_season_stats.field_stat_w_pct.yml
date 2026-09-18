@@ -1,0 +1,23 @@
+uuid: 8955e596-3a1d-4d55-9e22-cc00a16c66d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_w_pct
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_w_pct
+field_name: field_stat_w_pct
+entity_type: node
+bundle: team_season_stats
+label: 'W PCT'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

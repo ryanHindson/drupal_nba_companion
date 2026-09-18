@@ -1,0 +1,29 @@
+uuid: 65aea539-f7ed-40ac-a556-2dbf6df3cfbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_team
+    - node.type.team
+    - node.type.team_season_stats
+id: node.team_season_stats.field_team
+field_name: field_team
+entity_type: node
+bundle: team_season_stats
+label: Team
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      team: team
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

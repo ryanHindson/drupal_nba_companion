@@ -1,0 +1,20 @@
+uuid: 2a659a6f-1ef8-4464-ac98-d1c791b4a532
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_stat_ftm_rank
+field_name: field_stat_ftm_rank
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

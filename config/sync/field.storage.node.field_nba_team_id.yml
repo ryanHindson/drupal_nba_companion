@@ -1,0 +1,21 @@
+uuid: 2455ebcc-1a2e-4e99-83d6-6614038949ba
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_nba_team_id
+field_name: field_nba_team_id
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

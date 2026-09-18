@@ -1,0 +1,23 @@
+uuid: 9e30a9aa-b4b7-4f73-9754-ea8f215ce1c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_age
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_age
+field_name: field_ps_age
+entity_type: node
+bundle: player_season_stats
+label: AGE
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

@@ -1,0 +1,20 @@
+uuid: 0db23a6e-63b2-4d41-9398-72e3c01bcb3e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_w_pct
+field_name: field_ps_w_pct
+entity_type: node
+type: decimal
+settings:
+  precision: 12
+  scale: 3
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: cd9fb763-e187-47af-9f31-95ca413dec7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_stl
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_stl
+field_name: field_stat_stl
+entity_type: node
+bundle: team_season_stats
+label: STL
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

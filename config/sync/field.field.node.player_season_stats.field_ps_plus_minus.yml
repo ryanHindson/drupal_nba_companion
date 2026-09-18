@@ -1,0 +1,23 @@
+uuid: 2f464549-fbfc-4b2a-a47e-5745d6c6b87c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_plus_minus
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_plus_minus
+field_name: field_ps_plus_minus
+entity_type: node
+bundle: player_season_stats
+label: 'PLUS MINUS'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

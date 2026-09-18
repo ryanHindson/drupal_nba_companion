@@ -1,0 +1,20 @@
+uuid: da0c8ecf-f148-459c-a73f-c2c144b4a48a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_nba_fantasy_pts
+field_name: field_ps_nba_fantasy_pts
+entity_type: node
+type: decimal
+settings:
+  precision: 12
+  scale: 3
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

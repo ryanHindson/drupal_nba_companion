@@ -1,0 +1,23 @@
+uuid: ce3c135a-a18e-4527-8bb8-bd1fccbbc987
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_pts
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_pts
+field_name: field_ps_pts
+entity_type: node
+bundle: player_season_stats
+label: PTS
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

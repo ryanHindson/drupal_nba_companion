@@ -1,0 +1,23 @@
+uuid: 5f3c72ca-2db8-4355-aec3-5490088badb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_dreb
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_dreb
+field_name: field_stat_dreb
+entity_type: node
+bundle: team_season_stats
+label: DREB
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

@@ -1,0 +1,23 @@
+uuid: bab4a449-7e88-42e5-9386-5d721ceb5b87
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_min
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_min
+field_name: field_stat_min
+entity_type: node
+bundle: team_season_stats
+label: MIN
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

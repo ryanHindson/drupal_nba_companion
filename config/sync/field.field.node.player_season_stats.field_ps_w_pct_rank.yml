@@ -1,0 +1,23 @@
+uuid: 68a563ec-d465-436a-a03c-fa81776e753c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_w_pct_rank
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_w_pct_rank
+field_name: field_ps_w_pct_rank
+entity_type: node
+bundle: player_season_stats
+label: 'W PCT RANK'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

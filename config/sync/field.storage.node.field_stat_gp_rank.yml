@@ -1,0 +1,20 @@
+uuid: e61786c9-4b1a-4faf-8905-73ef69baf89c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_stat_gp_rank
+field_name: field_stat_gp_rank
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

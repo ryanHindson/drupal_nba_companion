@@ -1,0 +1,20 @@
+uuid: 8c27c8c4-0f4a-46d2-af33-395bfc97d9b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_fta
+field_name: field_ps_fta
+entity_type: node
+type: decimal
+settings:
+  precision: 12
+  scale: 3
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

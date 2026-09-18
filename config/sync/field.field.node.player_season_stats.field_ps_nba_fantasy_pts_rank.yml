@@ -1,0 +1,23 @@
+uuid: 44685dc5-b38a-42cd-8028-e9e133fe2587
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_nba_fantasy_pts_rank
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_nba_fantasy_pts_rank
+field_name: field_ps_nba_fantasy_pts_rank
+entity_type: node
+bundle: player_season_stats
+label: 'NBA FANTASY PTS RANK'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

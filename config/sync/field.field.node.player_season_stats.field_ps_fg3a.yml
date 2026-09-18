@@ -1,0 +1,23 @@
+uuid: ccf7218c-b9e5-455b-979e-3aed83ff4f94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_fg3a
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_fg3a
+field_name: field_ps_fg3a
+entity_type: node
+bundle: player_season_stats
+label: FG3A
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

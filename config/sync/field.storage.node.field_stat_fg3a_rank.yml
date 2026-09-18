@@ -1,0 +1,20 @@
+uuid: 65e7c40a-7fb8-40fb-a428-ad555479316c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_stat_fg3a_rank
+field_name: field_stat_fg3a_rank
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

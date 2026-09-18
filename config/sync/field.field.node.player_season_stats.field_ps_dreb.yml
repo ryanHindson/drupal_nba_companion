@@ -1,0 +1,23 @@
+uuid: 5da82da8-b042-4483-a789-b76e5cf539a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ps_dreb
+    - node.type.player_season_stats
+id: node.player_season_stats.field_ps_dreb
+field_name: field_ps_dreb
+entity_type: node
+bundle: player_season_stats
+label: DREB
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

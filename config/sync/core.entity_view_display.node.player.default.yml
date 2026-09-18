@@ -1,0 +1,58 @@
+uuid: 55b868b3-973f-4487-93ac-3125daca2eae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.player.field_jersey_number
+    - field.field.node.player.field_nba_player_id
+    - field.field.node.player.field_player_team
+    - field.field.node.player.field_position
+    - node.type.player
+  module:
+    - user
+id: node.player.default
+targetEntityType: node
+bundle: player
+mode: default
+content:
+  field_jersey_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_nba_player_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_player_team:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_position:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

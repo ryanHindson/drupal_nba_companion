@@ -1,0 +1,29 @@
+uuid: 95620fe1-29d4-403f-b7fa-6552e4ae3663
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stats_player
+    - node.type.player
+    - node.type.player_season_stats
+id: node.player_season_stats.field_stats_player
+field_name: field_stats_player
+entity_type: node
+bundle: player_season_stats
+label: 'stats player'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      player: player
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

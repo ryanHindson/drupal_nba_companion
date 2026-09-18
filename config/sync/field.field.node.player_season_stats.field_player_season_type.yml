@@ -1,0 +1,19 @@
+uuid: 08c796d4-5b17-4631-9592-5bbe6d6255a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_player_season_type
+    - node.type.player_season_stats
+id: node.player_season_stats.field_player_season_type
+field_name: field_player_season_type
+entity_type: node
+bundle: player_season_stats
+label: 'player Season Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

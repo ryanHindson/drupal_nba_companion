@@ -1,0 +1,19 @@
+uuid: ac0e7aa3-316f-44fa-a435-9b21e7e9dc81
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_season
+    - node.type.team_season_stats
+id: node.team_season_stats.field_season
+field_name: field_season
+entity_type: node
+bundle: team_season_stats
+label: Season
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

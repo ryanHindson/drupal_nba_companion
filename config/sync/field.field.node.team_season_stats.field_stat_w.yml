@@ -1,0 +1,23 @@
+uuid: b39ead41-d410-493f-9890-d6af3a38efe8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_w
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_w
+field_name: field_stat_w
+entity_type: node
+bundle: team_season_stats
+label: W
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

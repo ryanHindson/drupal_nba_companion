@@ -1,0 +1,20 @@
+uuid: d0c5da51-0440-4116-a4a9-1583d4d1b7d1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_stat_ftm
+field_name: field_stat_ftm
+entity_type: node
+type: decimal
+settings:
+  precision: 12
+  scale: 3
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: b1ef8fd2-ffdc-4804-8f13-a075cacb5447
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_stat_reb
+field_name: field_stat_reb
+entity_type: node
+type: decimal
+settings:
+  precision: 12
+  scale: 3
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

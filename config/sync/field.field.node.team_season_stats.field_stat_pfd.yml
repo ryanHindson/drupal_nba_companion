@@ -1,0 +1,23 @@
+uuid: 4de20f8e-a822-416f-a7f6-2e6bb2b633c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stat_pfd
+    - node.type.team_season_stats
+id: node.team_season_stats.field_stat_pfd
+field_name: field_stat_pfd
+entity_type: node
+bundle: team_season_stats
+label: PFD
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

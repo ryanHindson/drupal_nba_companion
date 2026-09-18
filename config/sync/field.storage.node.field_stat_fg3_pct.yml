@@ -1,0 +1,20 @@
+uuid: 9d54b15c-d788-44c0-9e4d-0aca92a81e59
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_stat_fg3_pct
+field_name: field_stat_fg3_pct
+entity_type: node
+type: decimal
+settings:
+  precision: 12
+  scale: 3
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

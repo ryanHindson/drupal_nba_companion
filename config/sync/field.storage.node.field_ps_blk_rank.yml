@@ -1,0 +1,20 @@
+uuid: d3c19493-8c4a-4363-a4f4-c6cffa1b5374
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ps_blk_rank
+field_name: field_ps_blk_rank
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
