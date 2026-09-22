@@ -1,0 +1,161 @@
+{#
+/**
+ * @file
+ * Complete full-page layout for Player content.
+ *
+ * Available custom variables:
+ * - player_nba_id
+ * - player_jersey_number
+ * - player_position
+ * - player_team_name
+ * - player_team_url
+ * - player_team_abbreviation
+ * - player_team_city
+ * - player_team_logo
+ * - player_stats
+ */
+#}
+
+{% set player_classes = [
+  'player-page',
+  player_team_abbreviation
+    ? 'player-page--' ~
+      (player_team_abbreviation|lower|clean_class)
+    : '',
+] %}
+
+<article{{ attributes.addClass(player_classes) }}>
+
+  {{ title_prefix }}
+
+  <header class="player-hero">
+
+    <div
+      class="player-hero__background"
+      aria-hidden="true"
+    >
+      {% if player_jersey_number %}
+        <span class="player-hero__number-mark">
+          {{ player_jersey_number }}
+        </span>
+      {% elseif player_team_abbreviation %}
+        <span class="player-hero__number-mark">
+          {{ player_team_abbreviation }}
+        </span>
+      {% endif %}
+    </div>
+
+    <div class="player-hero__inner">
+
+      <div class="player-hero__visual">
+
+        <div class="player-hero__team-logo">
+
+          {% if player_team_logo %}
+            {{ player_team_logo }}
+
+          {% elseif player_team_abbreviation %}
+            <span class="player-hero__logo-placeholder">
+              {{ player_team_abbreviation }}
+            </span>
+
+          {% else %}
+            <span class="player-hero__logo-placeholder">
+              NBA
+            </span>
+          {% endif %}
+
+        </div>
+
+      </div>
+
+      <div class="player-hero__identity">
+
+        <p class="player-hero__eyebrow">
+          NBA Player
+        </p>
+
+        <h1{{ title_attributes.addClass('player-hero__title') }}>
+          {{ label }}
+        </h1>
+
+        {% if player_team_name %}
+          <p class="player-hero__team">
+
+            {% if player_team_url %}
+              <a href="{{ player_team_url }}">
+                {{ player_team_name }}
+              </a>
+            {% else %}
+              {{ player_team_name }}
+            {% endif %}
+
+            {% if player_team_city %}
+              <span class="player-hero__team-city">
+                {{ player_team_city }}
+              </span>
+            {% endif %}
+
+          </p>
+        {% endif %}
+
+        {% if player_jersey_number or player_position %}
+          <dl class="player-hero__metadata">
+
+            {% if player_jersey_number %}
+              <div class="player-hero__metadata-item">
+                <dt>Number</dt>
+                <dd>#{{ player_jersey_number }}</dd>
+              </div>
+            {% endif %}
+
+            {% if player_position %}
+              <div class="player-hero__metadata-item">
+                <dt>Position</dt>
+                <dd>{{ player_position }}</dd>
+              </div>
+            {% endif %}
+
+          </dl>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </header>
+
+  {{ title_suffix }}
+
+  <div class="player-page__sections">
+
+    {% if player_stats %}
+      <section
+        class="player-page__section player-page__section--stats"
+        aria-labelledby="player-statistics-heading"
+      >
+
+        <header class="section-heading">
+          <div class="section-heading__content">
+
+            <p class="section-heading__eyebrow">
+              Current season
+            </p>
+
+            <h2 id="player-statistics-heading">
+              Player Statistics
+            </h2>
+
+          </div>
+        </header>
+
+        <div class="player-page__view player-page__view--stats">
+          {{ player_stats }}
+        </div>
+
+      </section>
+    {% endif %}
+
+  </div>
+
+</article>

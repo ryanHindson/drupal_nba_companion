@@ -1,0 +1,237 @@
+<?php
+
+/**
+ * @file
+ * Theme preprocessing for NBA Companion.
+ */
+
+use Drupal\node\NodeInterface;
+use Drupal\views\Views;
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function nba_companion_preprocess_node(array &$variables): void {
+  $node = $variables['node'] ?? NULL;
+  $view_mode = $variables['view_mode'] ?? '';
+
+  if (
+    !$node instanceof NodeInterface
+    || $view_mode !== 'full'
+  ) {
+    return;
+  }
+
+  if ($node->bundle() === 'team') {
+    nba_companion_preprocess_team(
+      $variables,
+      $node
+    );
+  }
+
+  if ($node->bundle() === 'player') {
+    nba_companion_preprocess_player(
+      $variables,
+      $node
+    );
+  }
+}
+
+/**
+ * Adds variables used by the full Team template.
+ */
+function nba_companion_preprocess_team(
+  array &$variables,
+  NodeInterface $node,
+): void {
+  $variables['team_abbreviation'] = nba_companion_field_value(
+    $node,
+    'field_abbreviation'
+  );
+
+  $variables['team_city'] = nba_companion_field_value(
+    $node,
+    'field_city'
+  );
+
+  $variables['team_state'] = nba_companion_field_value(
+    $node,
+    'field_state'
+  );
+
+  $variables['team_year_founded'] = nba_companion_field_value(
+    $node,
+    'field_year_founded'
+  );
+
+  $variables['team_nba_id'] = nba_companion_field_value(
+    $node,
+    'field_nba_team_id'
+  );
+
+  $variables['team_logo'] = nba_companion_render_reference(
+    $node,
+    'field_logo'
+  );
+
+  $variables['team_stats'] = nba_companion_build_view(
+    'team_season_stats',
+    'block_1',
+    [(string) $node->id()]
+  );
+
+  $variables['team_roster'] = nba_companion_build_view(
+    'team_roster',
+    'block_1',
+    [(string) $node->id()]
+  );
+}
+
+/**
+ * Adds variables used by the full Player template.
+ */
+function nba_companion_preprocess_player(
+  array &$variables,
+  NodeInterface $node,
+): void {
+  $variables['player_nba_id'] = nba_companion_field_value(
+    $node,
+    'field_nba_player_id'
+  );
+
+  $variables['player_jersey_number'] = nba_companion_field_value(
+    $node,
+    'field_jersey_number'
+  );
+
+  $variables['player_position'] = nba_companion_field_value(
+    $node,
+    'field_position'
+  );
+
+  $variables['player_team_name'] = '';
+  $variables['player_team_url'] = '';
+  $variables['player_team_abbreviation'] = '';
+  $variables['player_team_city'] = '';
+  $variables['player_team_logo'] = [];
+
+  if (
+    $node->hasField('field_player_team')
+    && !$node->get('field_player_team')->isEmpty()
+  ) {
+    $team = $node->get('field_player_team')->entity;
+
+    if ($team instanceof NodeInterface) {
+      $variables['player_team_name'] = $team->label();
+
+      $variables['player_team_url'] = $team
+        ->toUrl()
+        ->toString();
+
+      $variables['player_team_abbreviation'] =
+        nba_companion_field_value(
+          $team,
+          'field_abbreviation'
+        );
+
+      $variables['player_team_city'] =
+        nba_companion_field_value(
+          $team,
+          'field_city'
+        );
+
+      $variables['player_team_logo'] =
+        nba_companion_render_reference(
+          $team,
+          'field_logo'
+        );
+    }
+  }
+
+  $variables['player_stats'] = nba_companion_build_view(
+    'player_stats',
+    'block_1',
+    [(string) $node->id()]
+  );
+}
+
+/**
+ * Returns the first value from a Node field.
+ */
+function nba_companion_field_value(
+  NodeInterface $node,
+  string $field_name,
+): string {
+  if (
+    !$node->hasField($field_name)
+    || $node->get($field_name)->isEmpty()
+  ) {
+    return '';
+  }
+
+  return (string) $node->get($field_name)->value;
+}
+
+/**
+ * Renders the entity referenced by a field.
+ */
+function nba_companion_render_reference(
+  NodeInterface $node,
+  string $field_name,
+): array {
+  if (
+    !$node->hasField($field_name)
+    || $node->get($field_name)->isEmpty()
+  ) {
+    return [];
+  }
+
+  $entity = $node->get($field_name)->entity;
+
+  if (!$entity) {
+    return [];
+  }
+
+  return \Drupal::entityTypeManager()
+    ->getViewBuilder($entity->getEntityTypeId())
+    ->view($entity, 'default');
+}
+
+/**
+ * Builds a View display with contextual-filter arguments.
+ */
+function nba_companion_build_view(
+  string $view_id,
+  string $display_id,
+  array $arguments = [],
+): array {
+  $view = Views::getView($view_id);
+
+  if (!$view) {
+    \Drupal::logger('nba_companion')->warning(
+      'The @view View could not be loaded.',
+      ['@view' => $view_id]
+    );
+
+    return [];
+  }
+
+  try {
+    return $view->buildRenderable(
+      $display_id,
+      $arguments
+    );
+  }
+  catch (\Throwable $exception) {
+    \Drupal::logger('nba_companion')->error(
+      'Could not render @view:@display: @message',
+      [
+        '@view' => $view_id,
+        '@display' => $display_id,
+        '@message' => $exception->getMessage(),
+      ]
+    );
+
+    return [];
+  }
+}

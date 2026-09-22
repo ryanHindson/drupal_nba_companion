@@ -1,0 +1,19 @@
+name: NBA Companion
+type: theme
+description: Dark modern sports theme for NBA Companion.
+package: Custom
+core_version_requirement: ^11
+base theme: false
+
+libraries:
+  - nba_companion/global
+
+regions:
+  utility: Utility
+  header: Header
+  primary_menu: Primary menu
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar: Sidebar
+  footer: Footer

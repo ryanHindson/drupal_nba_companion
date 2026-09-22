@@ -1,0 +1,280 @@
+/* Site identity */
+
+.site-name {
+  color: var(--nba-color-text);
+  font-family: var(--nba-font-display);
+  font-size: 1.45rem;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.site-name::before {
+  display: inline-block;
+  width: 0.3rem;
+  height: 1.4rem;
+  margin-right: 0.6rem;
+  background: var(--nba-color-accent);
+  content: "";
+  transform: skew(-12deg);
+  vertical-align: -0.15rem;
+}
+
+/* Navigation */
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  display: block;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--nba-radius-small);
+  color: var(--nba-color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menu a:hover,
+.menu a:focus-visible,
+.menu a.is-active {
+  color: var(--nba-color-text);
+  background: var(--nba-color-surface-raised);
+}
+
+/* Page title */
+
+.page-title {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+.page-title::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 4rem;
+  height: 0.25rem;
+  background: var(--nba-color-accent);
+  content: "";
+  transform: skew(-16deg);
+}
+
+/* Cards and blocks */
+
+.block,
+.node--view-mode-full {
+  margin-bottom: 1.5rem;
+}
+
+.block > h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--nba-color-border);
+  font-size: 1.4rem;
+}
+
+.block > h2::before {
+  width: 0.25rem;
+  height: 1.25rem;
+  background: var(--nba-color-accent);
+  content: "";
+  transform: skew(-12deg);
+}
+
+.sports-card,
+.view-content > .views-row {
+  border: 1px solid var(--nba-color-border);
+  border-radius: var(--nba-radius-medium);
+  background:
+    linear-gradient(
+      145deg,
+      rgb(255 255 255 / 3%),
+      transparent 45%
+    ),
+    var(--nba-color-surface);
+  box-shadow: 0 10px 25px rgb(0 0 0 / 16%);
+  transition:
+    border-color var(--nba-transition),
+    background var(--nba-transition),
+    transform var(--nba-transition);
+}
+
+.sports-card:hover,
+.view-content > .views-row:hover {
+  border-color: #3b4657;
+  background-color: var(--nba-color-surface-raised);
+  transform: translateY(-2px);
+}
+
+.view-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.view-content > .views-row {
+  padding: 1rem;
+}
+
+/* Field output */
+
+.field {
+  margin-bottom: 0.75rem;
+}
+
+.field__label {
+  color: var(--nba-color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field__item {
+  color: var(--nba-color-text);
+}
+
+/* Tables */
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  overflow: hidden;
+  border: 1px solid var(--nba-color-border);
+  border-radius: var(--nba-radius-medium);
+  background: var(--nba-color-surface);
+}
+
+thead {
+  background: var(--nba-color-surface-raised);
+}
+
+th {
+  color: var(--nba-color-text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+th,
+td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--nba-color-border);
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr {
+  transition: background var(--nba-transition);
+}
+
+tbody tr:hover {
+  background: var(--nba-color-surface-hover);
+}
+
+/* Drupal tabs */
+
+.tabs ul {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0;
+  border-bottom: 1px solid var(--nba-color-border);
+  list-style: none;
+}
+
+.tabs a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid transparent;
+  color: var(--nba-color-text-muted);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tabs a:hover,
+.tabs a.is-active {
+  border-bottom-color: var(--nba-color-accent);
+  color: var(--nba-color-text);
+}
+
+/* Messages */
+
+.messages {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--nba-color-border);
+  border-left-width: 4px;
+  border-radius: var(--nba-radius-small);
+  background: var(--nba-color-surface);
+}
+
+.messages--status {
+  border-left-color: var(--nba-color-success);
+}
+
+.messages--warning {
+  border-left-color: var(--nba-color-warning);
+}
+
+.messages--error {
+  border-left-color: var(--nba-color-danger);
+}
+
+/* Breadcrumbs */
+
+.breadcrumb {
+  padding-block: 1rem;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  color: var(--nba-color-text-muted);
+  font-size: 0.8rem;
+  list-style: none;
+}
+
+.breadcrumb li + li::before {
+  margin-right: 0.5rem;
+  color: var(--nba-color-border);
+  content: "/";
+}
+
+/* Responsive tables */
+
+@media (max-width: 700px) {
+  .view-content,
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 42rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+  }
+}

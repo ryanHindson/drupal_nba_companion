@@ -1,0 +1,177 @@
+{#
+/**
+ * @file
+ * Complete full-page layout for Team content.
+ *
+ * Available custom variables:
+ * - team_abbreviation
+ * - team_city
+ * - team_state
+ * - team_year_founded
+ * - team_nba_id
+ * - team_logo
+ * - team_stats
+ * - team_roster
+ */
+#}
+
+{% set team_classes = [
+  'team-page',
+  team_abbreviation
+    ? 'team-page--' ~ (team_abbreviation|lower|clean_class)
+    : '',
+] %}
+
+<article{{ attributes.addClass(team_classes) }}>
+
+  {{ title_prefix }}
+
+  <header class="team-hero">
+
+    <div
+      class="team-hero__background"
+      aria-hidden="true"
+    >
+      {% if team_abbreviation %}
+        <span class="team-hero__mark">
+          {{ team_abbreviation }}
+        </span>
+      {% endif %}
+    </div>
+
+    <div class="team-hero__inner">
+
+      <div class="team-hero__logo">
+        {% if team_logo %}
+          {{ team_logo }}
+        {% elseif team_abbreviation %}
+          <span class="team-hero__logo-placeholder">
+            {{ team_abbreviation }}
+          </span>
+        {% else %}
+          <span class="team-hero__logo-placeholder">
+            NBA
+          </span>
+        {% endif %}
+      </div>
+
+      <div class="team-hero__identity">
+
+        <p class="team-hero__eyebrow">
+          NBA Team
+        </p>
+
+        <h1{{ title_attributes.addClass('team-hero__title') }}>
+          {{ label }}
+        </h1>
+
+        {% if team_city or team_state %}
+          <p class="team-hero__location">
+
+            {% if team_city %}
+              <span>{{ team_city }}</span>
+            {% endif %}
+
+            {% if team_city and team_state %}
+              <span
+                class="team-hero__location-separator"
+                aria-hidden="true"
+              >
+                •
+              </span>
+            {% endif %}
+
+            {% if team_state %}
+              <span>{{ team_state }}</span>
+            {% endif %}
+
+          </p>
+        {% endif %}
+
+        {% if team_abbreviation or team_year_founded %}
+          <dl class="team-hero__metadata">
+
+            {% if team_abbreviation %}
+              <div class="team-hero__metadata-item">
+                <dt>Abbreviation</dt>
+                <dd>{{ team_abbreviation }}</dd>
+              </div>
+            {% endif %}
+
+            {% if team_year_founded %}
+              <div class="team-hero__metadata-item">
+                <dt>Founded</dt>
+                <dd>{{ team_year_founded }}</dd>
+              </div>
+            {% endif %}
+
+          </dl>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </header>
+
+  {{ title_suffix }}
+
+  <div class="team-page__sections">
+
+    {% if team_stats %}
+      <section
+        class="team-page__section team-page__section--stats"
+        aria-labelledby="team-statistics-heading"
+      >
+
+        <header class="section-heading">
+          <div class="section-heading__content">
+
+            <p class="section-heading__eyebrow">
+              Current season
+            </p>
+
+            <h2 id="team-statistics-heading">
+              Team Statistics
+            </h2>
+
+          </div>
+        </header>
+
+        <div class="team-page__view team-page__view--stats">
+          {{ team_stats }}
+        </div>
+
+      </section>
+    {% endif %}
+
+    {% if team_roster %}
+      <section
+        class="team-page__section team-page__section--roster"
+        aria-labelledby="team-roster-heading"
+      >
+
+        <header class="section-heading">
+          <div class="section-heading__content">
+
+            <p class="section-heading__eyebrow">
+              Players
+            </p>
+
+            <h2 id="team-roster-heading">
+              Current Roster
+            </h2>
+
+          </div>
+        </header>
+
+        <div class="team-page__view team-page__view--roster">
+          {{ team_roster }}
+        </div>
+
+      </section>
+    {% endif %}
+
+  </div>
+
+</article>

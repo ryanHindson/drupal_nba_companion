@@ -1,0 +1,11 @@
+global:
+  version: 1.x
+  css:
+    base:
+      css/base.css: {}
+    layout:
+      css/layout.css: {}
+    theme:
+      css/theme.css: {}
+      css/team.css: {}
+      css/player.css: {}

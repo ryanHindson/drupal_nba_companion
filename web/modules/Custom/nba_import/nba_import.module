@@ -9,9 +9,10 @@
  * Implements hook_cron().
  */
 function nba_import_cron(): void {
+  // Import parent records before records that reference them.
   nba_import_teams();
-  nba_import_team_season_stats();
   nba_import_players();
+  nba_import_team_season_stats();
   nba_import_player_season_stats();
 }
 
@@ -49,13 +50,15 @@ function nba_import_teams(): void {
     $imported = 0;
 
     foreach ($result['data'] as $team) {
-      if (!isset($team['id'], $team['full_name'])) {
+      if (!isset($team['id']) || empty($team['full_name'])) {
         continue;
       }
 
+      $nba_team_id = (string) $team['id'];
+
       $matches = $storage->loadByProperties([
         'type' => 'team',
-        'field_nba_team_id' => (string) $team['id'],
+        'field_nba_team_id' => $nba_team_id,
       ]);
 
       $node = $matches
@@ -63,7 +66,7 @@ function nba_import_teams(): void {
         : $storage->create(['type' => 'team']);
 
       $node->setTitle($team['full_name']);
-      $node->set('field_nba_team_id', (string) $team['id']);
+      $node->set('field_nba_team_id', $nba_team_id);
       $node->set('field_abbreviation', $team['abbreviation'] ?? '');
       $node->set('field_city', $team['city'] ?? '');
       $node->set('field_nickname', $team['nickname'] ?? '');
@@ -76,9 +79,10 @@ function nba_import_teams(): void {
         );
       }
 
-      // Manually selected fields, such as a logo, are untouched.
+      // Manually maintained fields, such as a logo, remain untouched.
       $node->setPublished(TRUE);
       $node->save();
+
       $imported++;
     }
 
@@ -96,127 +100,6 @@ function nba_import_teams(): void {
   catch (\Throwable $e) {
     \Drupal::logger('nba_import')->error(
       'NBA team import failed: @message',
-      ['@message' => $e->getMessage()]
-    );
-  }
-}
-
-/**
- * Creates or updates Team Season Stats content.
- */
-function nba_import_team_season_stats(): void {
-  $season = '2025-26';
-
-  $state = \Drupal::state();
-  $now = \Drupal::time()->getRequestTime();
-  $state_key = 'nba_import.stats_last_run.' . $season;
-
-  if ($now - (int) $state->get($state_key, 0) < 86400) {
-    return;
-  }
-
-  try {
-    $url = 'http://python:8000/nba/team-season-stats?season='
-      . rawurlencode($season);
-
-    $response = \Drupal::httpClient()->get(
-      $url,
-      ['timeout' => 60]
-    );
-
-    $result = json_decode(
-      (string) $response->getBody(),
-      TRUE,
-      512,
-      JSON_THROW_ON_ERROR
-    );
-
-    if (
-      !isset($result['data'])
-      || !is_array($result['data'])
-      || $result['data'] === []
-    ) {
-      throw new \UnexpectedValueException(
-        'Team Season Stats response has no data rows.'
-      );
-    }
-
-    $storage = \Drupal::entityTypeManager()->getStorage('node');
-    $imported = 0;
-
-    foreach ($result['data'] as $row) {
-      if (!isset($row['TEAM_ID'], $row['TEAM_NAME'])) {
-        continue;
-      }
-
-      $teams = $storage->loadByProperties([
-        'type' => 'team',
-        'field_nba_team_id' => (string) $row['TEAM_ID'],
-      ]);
-
-      if (!$teams) {
-        \Drupal::logger('nba_import')->warning(
-          'No Team content found for NBA team ID @id.',
-          ['@id' => $row['TEAM_ID']]
-        );
-        continue;
-      }
-
-      $team = reset($teams);
-
-      $matches = $storage->loadByProperties([
-        'type' => 'team_season_stats',
-        'field_team.target_id' => $team->id(),
-        'field_season' => $season,
-      ]);
-
-      $stats = $matches
-        ? reset($matches)
-        : $storage->create(['type' => 'team_season_stats']);
-
-      $stats->setTitle($row['TEAM_NAME'] . ' — ' . $season);
-      $stats->set('field_team', [
-        'target_id' => $team->id(),
-      ]);
-      $stats->set('field_season', $season);
-
-      // Example: FG_PCT maps to field_stat_fg_pct.
-      foreach ($row as $api_key => $value) {
-        if (!preg_match('/^[A-Z][A-Z0-9_]*$/', $api_key)) {
-          continue;
-        }
-
-        $field_name = 'field_stat_' . strtolower($api_key);
-
-        if ($stats->hasField($field_name) && is_numeric($value)) {
-          $stats->set($field_name, $value);
-        }
-      }
-
-      $stats->setPublished(TRUE);
-      $stats->save();
-      $imported++;
-    }
-
-    if ($imported === 0) {
-      throw new \RuntimeException(
-        'No Team Season Stats records were imported.'
-      );
-    }
-
-    $state->set($state_key, $now);
-
-    \Drupal::logger('nba_import')->notice(
-      'Imported Team Season Stats for @count teams in @season.',
-      [
-        '@count' => $imported,
-        '@season' => $season,
-      ]
-    );
-  }
-  catch (\Throwable $e) {
-    \Drupal::logger('nba_import')->error(
-      'NBA Team Season Stats import failed: @message',
       ['@message' => $e->getMessage()]
     );
   }
@@ -282,7 +165,7 @@ function nba_import_players(): void {
 
     $previous_count = (int) $state->get($count_key, 0);
 
-    // Protect against deleting Players after a much smaller response.
+    // Protect against deletion after an unexpectedly small response.
     if (
       $previous_count > 0
       && $response_count < $previous_count * 0.9
@@ -303,11 +186,11 @@ function nba_import_players(): void {
         continue;
       }
 
-      $player_id = (string) $player['id'];
+      $nba_player_id = (string) $player['id'];
 
       $matches = $storage->loadByProperties([
         'type' => 'player',
-        'field_nba_player_id' => $player_id,
+        'field_nba_player_id' => $nba_player_id,
       ]);
 
       $node = $matches
@@ -315,10 +198,10 @@ function nba_import_players(): void {
         : $storage->create(['type' => 'player']);
 
       $node->setTitle($player['full_name']);
-      $node->set('field_nba_player_id', $player_id);
+      $node->set('field_nba_player_id', $nba_player_id);
       $node->set('field_position', $player['position'] ?? NULL);
 
-      // A blank API value does not erase a manual jersey number.
+      // A blank API value does not erase a saved jersey number.
       if (
         isset($player['jersey_number'])
         && $player['jersey_number'] !== ''
@@ -329,12 +212,12 @@ function nba_import_players(): void {
         );
       }
 
-      $team_id = $player['team_id'] ?? NULL;
+      $nba_team_id = $player['team_id'] ?? NULL;
 
-      if ($team_id) {
+      if ($nba_team_id) {
         $teams = $storage->loadByProperties([
           'type' => 'team',
-          'field_nba_team_id' => (string) $team_id,
+          'field_nba_team_id' => (string) $nba_team_id,
         ]);
 
         if (!$teams) {
@@ -342,30 +225,33 @@ function nba_import_players(): void {
             'Skipping player @name: no Team found for NBA team ID @id.',
             [
               '@name' => $player['full_name'],
-              '@id' => $team_id,
+              '@id' => $nba_team_id,
             ]
           );
+
           $skipped++;
           continue;
         }
 
         $team = reset($teams);
-        $node->set(
-          'field_player_team',
-          ['target_id' => $team->id()]
-        );
+
+        // Connect the Player node to its Drupal Team node.
+        $node->set('field_player_team', [
+          'target_id' => $team->id(),
+        ]);
       }
 
-      // A missing team leaves an existing Team reference untouched.
-      $node->set('field_in_selected_season', TRUE);
+      // A missing API team leaves an existing Team reference untouched.
       $node->setPublished(TRUE);
       $node->save();
 
-      $seen_ids[$player_id] = TRUE;
+      $seen_ids[$nba_player_id] = TRUE;
       $imported++;
     }
 
-    // No deletion happens if the response could not be fully imported.
+    /*
+     * Do not delete existing Players after a partially successful import.
+     */
     if ($imported === 0 || $skipped > 0) {
       throw new \RuntimeException(
         "Imported $imported players but skipped $skipped; "
@@ -376,19 +262,26 @@ function nba_import_players(): void {
     $deleted_players = 0;
     $deleted_stats = 0;
 
-    // First successful run establishes a response-size baseline.
+    // The first successful import establishes the response-size baseline.
     if ($previous_count > 0) {
       $existing_players = $storage->loadByProperties([
         'type' => 'player',
       ]);
 
       foreach ($existing_players as $node) {
-        $player_id = (string) $node->get(
+        if (!$node->hasField('field_nba_player_id')) {
+          continue;
+        }
+
+        $nba_player_id = (string) $node->get(
           'field_nba_player_id'
         )->value;
 
-        // Leave manually created Players without an NBA ID alone.
-        if ($player_id === '' || isset($seen_ids[$player_id])) {
+        // Leave manually created Players without an NBA ID untouched.
+        if (
+          $nba_player_id === ''
+          || isset($seen_ids[$nba_player_id])
+        ) {
           continue;
         }
 
@@ -430,6 +323,158 @@ function nba_import_players(): void {
 }
 
 /**
+ * Creates or updates Team Season Stats content.
+ */
+function nba_import_team_season_stats(): void {
+  $season = '2025-26';
+
+  $state = \Drupal::state();
+  $now = \Drupal::time()->getRequestTime();
+  $state_key = 'nba_import.stats_last_run.' . $season;
+
+  if ($now - (int) $state->get($state_key, 0) < 86400) {
+    return;
+  }
+
+  try {
+    $url = 'http://python:8000/nba/team-season-stats?season='
+      . rawurlencode($season);
+
+    $response = \Drupal::httpClient()->get(
+      $url,
+      ['timeout' => 60]
+    );
+
+    $result = json_decode(
+      (string) $response->getBody(),
+      TRUE,
+      512,
+      JSON_THROW_ON_ERROR
+    );
+
+    if (
+      !isset($result['data'])
+      || !is_array($result['data'])
+      || $result['data'] === []
+    ) {
+      throw new \UnexpectedValueException(
+        'Team Season Stats response has no data rows.'
+      );
+    }
+
+    $storage = \Drupal::entityTypeManager()->getStorage('node');
+    $imported = 0;
+    $skipped = 0;
+
+    foreach ($result['data'] as $row) {
+      if (!isset($row['TEAM_ID']) || empty($row['TEAM_NAME'])) {
+        $skipped++;
+        continue;
+      }
+
+      $nba_team_id = (string) $row['TEAM_ID'];
+
+      // Locate the Team node using the external NBA Team ID.
+      $teams = $storage->loadByProperties([
+        'type' => 'team',
+        'field_nba_team_id' => $nba_team_id,
+      ]);
+
+      if (!$teams) {
+        \Drupal::logger('nba_import')->warning(
+          'No Team content found for NBA team ID @id.',
+          ['@id' => $nba_team_id]
+        );
+
+        $skipped++;
+        continue;
+      }
+
+      $team = reset($teams);
+
+      // Find the record using its Drupal Team reference and season.
+      $matches = $storage->loadByProperties([
+        'type' => 'team_season_stats',
+        'field_team.target_id' => $team->id(),
+        'field_season' => $season,
+      ]);
+
+      $stats = $matches
+        ? reset($matches)
+        : $storage->create(['type' => 'team_season_stats']);
+
+      $stats->setTitle(
+        $row['TEAM_NAME'] . ' — ' . $season
+      );
+
+      // Retain the external NBA ID when the field is attached.
+      if ($stats->hasField('field_nba_team_id')) {
+        $stats->set(
+          'field_nba_team_id',
+          $nba_team_id
+        );
+      }
+
+      // Connect the stats record to its Drupal Team node.
+      $stats->set('field_team', [
+        'target_id' => $team->id(),
+      ]);
+
+      $stats->set('field_season', $season);
+
+      /*
+       * Example mappings:
+       * FG_PCT -> field_stat_fg_pct
+       * REB    -> field_stat_reb
+       * AST    -> field_stat_ast
+       */
+      foreach ($row as $api_key => $value) {
+        if (!preg_match('/^[A-Z][A-Z0-9_]*$/', $api_key)) {
+          continue;
+        }
+
+        $field_name = 'field_stat_' . strtolower($api_key);
+
+        if (
+          $stats->hasField($field_name)
+          && is_numeric($value)
+        ) {
+          $stats->set($field_name, $value);
+        }
+      }
+
+      $stats->setPublished(TRUE);
+      $stats->save();
+
+      $imported++;
+    }
+
+    if ($imported === 0) {
+      throw new \RuntimeException(
+        'No Team Season Stats records were imported.'
+      );
+    }
+
+    $state->set($state_key, $now);
+
+    \Drupal::logger('nba_import')->notice(
+      'Imported Team Season Stats for @count teams in @season; skipped @skipped rows.',
+      [
+        '@count' => $imported,
+        '@season' => $season,
+        '@skipped' => $skipped,
+      ]
+    );
+  }
+  catch (\Throwable $e) {
+    \Drupal::logger('nba_import')->error(
+      'NBA Team Season Stats import failed: @message',
+      ['@message' => $e->getMessage()]
+    );
+  }
+}
+
+/**
  * Creates or updates Player Season Stats content.
  */
 function nba_import_player_season_stats(): void {
@@ -438,8 +483,10 @@ function nba_import_player_season_stats(): void {
 
   $state = \Drupal::state();
   $now = \Drupal::time()->getRequestTime();
+
   $state_key = 'nba_import.player_stats_last_run.'
-    . $season . '.regular_season';
+    . $season
+    . '.regular_season';
 
   if ($now - (int) $state->get($state_key, 0) < 86400) {
     return;
@@ -495,24 +542,41 @@ function nba_import_player_season_stats(): void {
     $skipped = 0;
 
     foreach ($result['data'] as $row) {
-      if (empty($row['PLAYER_ID']) || empty($row['PLAYER_NAME'])) {
+      if (
+        empty($row['PLAYER_ID'])
+        || empty($row['PLAYER_NAME'])
+      ) {
         $skipped++;
         continue;
       }
 
+      $nba_player_id = (string) $row['PLAYER_ID'];
+
+      // Locate the Player node through the NBA Player ID.
       $players = $storage->loadByProperties([
         'type' => 'player',
-        'field_nba_player_id' => (string) $row['PLAYER_ID'],
+        'field_nba_player_id' => $nba_player_id,
       ]);
 
       if (!$players) {
-        // Players excluded from the roster have no Player page.
+        \Drupal::logger('nba_import')->warning(
+          'Skipping stats for @name: no Player content found for NBA ID @id.',
+          [
+            '@name' => $row['PLAYER_NAME'],
+            '@id' => $nba_player_id,
+          ]
+        );
+
         $skipped++;
         continue;
       }
 
       $player = reset($players);
 
+      /*
+       * Find an existing stats record using the Player reference,
+       * season, and season type.
+       */
       $matches = $storage->loadByProperties([
         'type' => 'player_season_stats',
         'field_stats_player.target_id' => $player->id(),
@@ -525,16 +589,42 @@ function nba_import_player_season_stats(): void {
         : $storage->create(['type' => 'player_season_stats']);
 
       $stats->setTitle(
-        $row['PLAYER_NAME'] . ' — ' . $season . ' '
+        $row['PLAYER_NAME']
+        . ' — '
+        . $season
+        . ' '
         . $season_type
       );
+
+      // Retain the external NBA Player ID.
+      if ($stats->hasField('field_nba_player_id')) {
+        $stats->set(
+          'field_nba_player_id',
+          $nba_player_id
+        );
+      }
+
+      // Connect the stats record to its Drupal Player node.
       $stats->set('field_stats_player', [
         'target_id' => $player->id(),
       ]);
-      $stats->set('field_player_season', $season);
-      $stats->set('field_player_season_type', $season_type);
 
-      // Example: FG_PCT maps to field_ps_fg_pct.
+      $stats->set(
+        'field_player_season',
+        $season
+      );
+
+      $stats->set(
+        'field_player_season_type',
+        $season_type
+      );
+
+      /*
+       * Example mappings:
+       * PTS    -> field_ps_pts
+       * AST    -> field_ps_ast
+       * FG_PCT -> field_ps_fg_pct
+       */
       foreach ($row as $api_key => $value) {
         if (!preg_match('/^[A-Z][A-Z0-9_]*$/', $api_key)) {
           continue;
@@ -542,13 +632,17 @@ function nba_import_player_season_stats(): void {
 
         $field_name = 'field_ps_' . strtolower($api_key);
 
-        if ($stats->hasField($field_name) && is_numeric($value)) {
+        if (
+          $stats->hasField($field_name)
+          && is_numeric($value)
+        ) {
           $stats->set($field_name, $value);
         }
       }
 
       $stats->setPublished(TRUE);
       $stats->save();
+
       $imported++;
     }
 

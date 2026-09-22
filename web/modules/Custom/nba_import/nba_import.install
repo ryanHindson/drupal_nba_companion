@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for the NBA Import module.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Attaches external NBA IDs to the season statistics content types.
+ */
+function nba_import_update_11001(): string {
+  nba_import_attach_existing_field(
+    'field_nba_team_id',
+    'team_season_stats',
+    'NBA Team ID',
+    'External NBA API identifier for this team.'
+  );
+
+  nba_import_attach_existing_field(
+    'field_nba_player_id',
+    'player_season_stats',
+    'NBA Player ID',
+    'External NBA API identifier for this player.'
+  );
+
+  return 'Attached NBA Team ID and NBA Player ID to season statistics.';
+}
+
+/**
+ * Attaches an existing Node field storage to another content type.
+ */
+function nba_import_attach_existing_field(
+  string $field_name,
+  string $bundle,
+  string $label,
+  string $description,
+): void {
+  $storage = FieldStorageConfig::loadByName(
+    'node',
+    $field_name
+  );
+
+  if (!$storage) {
+    throw new \RuntimeException(
+      "The $field_name field storage does not exist."
+    );
+  }
+
+  $field = FieldConfig::loadByName(
+    'node',
+    $bundle,
+    $field_name
+  );
+
+  if ($field) {
+    return;
+  }
+
+  FieldConfig::create([
+    'field_storage' => $storage,
+    'bundle' => $bundle,
+    'label' => $label,
+    'description' => $description,
+    'required' => FALSE,
+    'translatable' => FALSE,
+  ])->save();
+}
