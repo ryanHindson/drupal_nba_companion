@@ -1,0 +1,191 @@
+/**
+ * Find a Player block on the home page.
+ */
+
+.player-finder {
+  min-width: 0;
+  margin: 3rem 0 4rem;
+  scroll-margin-top: 6rem;
+}
+
+/* Same heading structure as the Teams section. */
+.player-finder__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--nba-color-border);
+}
+
+.player-finder__eyebrow {
+  margin: 0 0 0.75rem;
+  color: whitesmoke;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.player-finder__heading h2 {
+  margin: 0;
+  color: var(--nba-color-accent);
+}
+
+.player-finder__heading > p {
+  margin: 0;
+  color: var(--nba-color-text-muted);
+  font-size: 0.85rem;
+}
+
+/* Search form. */
+.player-finder .views-exposed-form {
+  margin-bottom: 1.5rem;
+}
+
+.player-finder .views-exposed-form .form--inline {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.player-finder .views-exposed-form .form-item {
+  flex: 1 1 18rem;
+  min-width: 0;
+  margin: 0;
+}
+
+.player-finder .views-exposed-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--nba-color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.player-finder .views-exposed-form input[type="text"],
+.player-finder .views-exposed-form input[type="search"] {
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--nba-color-border);
+  border-radius: var(--nba-radius-small);
+  color: var(--nba-color-text);
+  background: var(--nba-color-surface);
+}
+
+.player-finder .views-exposed-form input[type="text"]:focus,
+.player-finder .views-exposed-form input[type="search"]:focus {
+  border-color: var(--nba-color-accent);
+  outline: 2px solid rgb(255 90 31 / 20%);
+}
+
+.player-finder .views-exposed-form .form-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  width: auto;
+  margin: 0;
+}
+
+.player-finder .views-exposed-form .form-actions input[type="submit"],
+.player-finder .views-exposed-form .form-actions button {
+  width: auto;
+  min-height: 2.5rem;
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  border-color: var(--nba-color-accent);
+  border-radius: var(--nba-radius-small);
+  color: #fff;
+  background: var(--nba-color-accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.player-finder .views-exposed-form .form-actions input[type="submit"]:hover,
+.player-finder .views-exposed-form .form-actions button:hover {
+  border-color: var(--nba-color-accent-hover);
+  background: var(--nba-color-accent-hover);
+}
+
+/* Player results use the same surface and hover treatment as team cards. */
+.player-finder .view-content {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 18rem), 1fr)
+  );
+  gap: 1rem;
+}
+
+.player-finder__card {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--nba-color-border);
+  border-radius: var(--nba-radius-medium);
+  background:
+    linear-gradient(
+      145deg,
+      rgb(255 255 255 / 4%),
+      transparent 50%
+    ),
+    var(--nba-color-surface);
+  transition:
+    border-color var(--nba-transition),
+    background var(--nba-transition),
+    transform var(--nba-transition);
+}
+
+.player-finder__card:hover,
+.player-finder__card:focus-within {
+  border-color: var(--nba-color-accent);
+  background-color: var(--nba-color-surface-raised);
+  transform: translateY(-3px);
+}
+
+.player-finder__card .views-field-title {
+  margin-bottom: 0.5rem;
+  font-family: var(--nba-font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.player-finder__card .views-field-title a {
+  color: var(--nba-color-text);
+  text-decoration: none;
+}
+
+.player-finder__card .views-field-title a:hover,
+.player-finder__card .views-field-title a:focus-visible {
+  color: var(--nba-color-accent-hover);
+}
+
+.player-finder__card .views-field:not(.views-field-title) {
+  margin-top: 0.3rem;
+  color: var(--nba-color-text-muted);
+  font-size: 0.85rem;
+}
+
+.player-finder .view-empty {
+  padding: 1rem;
+  border: 1px dashed var(--nba-color-border);
+  border-radius: var(--nba-radius-small);
+  color: var(--nba-color-text-muted);
+  background: var(--nba-color-surface);
+}
+
+@media (max-width: 520px) {
+  .player-finder__heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

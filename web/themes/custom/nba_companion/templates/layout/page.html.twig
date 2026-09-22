@@ -44,14 +44,14 @@
 #}
 <div class="layout-container">
 
-  <header>
-    {{ page.header }}
-  </header>
+<header class="site-header">
+  {{ include('@nba_companion/navigation/site-nav.html.twig', {
+    home_url: front_page,
+    team_menu: nba_team_menu,
+    player_search: nba_player_search
+  }) }}
+</header>
 
-  {{ page.primary_menu }}
-  {{ page.secondary_menu }}
-
-  {{ page.breadcrumb }}
 
   {{ page.highlighted }}
 

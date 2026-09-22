@@ -235,3 +235,18 @@ function nba_companion_build_view(
     return [];
   }
 }
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function nba_companion_preprocess_page(array &$variables): void {
+  $variables['nba_team_menu'] = nba_companion_build_view(
+    'teams',
+    'block_2'
+  );
+
+  $variables['nba_player_search'] = nba_companion_build_view(
+    'find_players',
+    'block_2'
+  );
+}

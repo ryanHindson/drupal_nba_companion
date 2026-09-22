@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Outer layout for the front page.
+ */
+#}
+
+<div class="layout-container home-page">
+
+<header class="site-header">
+  {{ include('@nba_companion/navigation/site-nav.html.twig', {
+    home_url: front_page,
+    team_menu: nba_team_menu,
+    player_search: nba_player_search
+  }) }}
+</header>
+
+  {% if page.highlighted %}
+    {{ page.highlighted }}
+  {% endif %}
+
+  {% if page.breadcrumb %}
+    {{ page.breadcrumb }}
+  {% endif %}
+
+  <main>
+    <a id="main-content" tabindex="-1"></a>
+
+    {#
+      Main page content renders the Home node.
+      The Teams View block renders beneath it.
+    #}
+    {{ page.content }}
+  </main>
+
+  {% if page.footer %}
+    <footer class="site-footer">
+      {{ page.footer }}
+    </footer>
+  {% endif %}
+
+</div>

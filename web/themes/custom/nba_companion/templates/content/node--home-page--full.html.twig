@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Home content item: title and description.
+ */
+#}
+
+<article{{ attributes.addClass('home-intro') }}>
+  {{ title_prefix }}
+
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero__content">
+      <p class="home-hero__eyebrow">NBA Companion</p>
+
+      <h1{{ title_attributes.setAttribute('id', 'home-title') }}>
+        {{ label }}
+      </h1>
+
+      {% if content.body %}
+        <div class="home-hero__description">
+          {{ content.body }}
+        </div>
+      {% endif %}
+
+      <a class="home-hero__link" href="#teams">
+        Explore teams
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="home-hero__graphic" aria-hidden="true">
+      <span>30</span>
+      <small>Teams</small>
+    </div>
+  </section>
+
+  {{ title_suffix }}
+</article>

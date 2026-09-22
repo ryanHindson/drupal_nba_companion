@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Teams View block on the home page.
+ */
+#}
+
+<section{{ attributes.addClass('home-teams').setAttribute('id', 'teams') }}
+  aria-labelledby="home-teams-title">
+
+  {{ title_prefix }}
+
+  <div class="home-teams__heading">
+    <div>
+      <p class="home-teams__eyebrow">Find your side</p>
+      <h2 id="home-teams-title">Choose a Team</h2>
+    </div>
+
+    <p>Explore all 30 NBA teams</p>
+  </div>
+
+  {{ title_suffix }}
+
+  {{ content }}
+</section>

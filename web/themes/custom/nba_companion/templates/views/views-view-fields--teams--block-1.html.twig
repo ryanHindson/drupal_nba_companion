@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * One Team card in the Teams View block.
+ */
+#}
+
+<article class="team-picker-card">
+
+  <div class="team-picker-card__logo">
+    {% if fields.field_logo.content %}
+      {{ fields.field_logo.content }}
+    {% elseif fields.field_abbreviation.content %}
+      <span class="team-picker-card__placeholder">
+        {{ fields.field_abbreviation.content }}
+      </span>
+    {% else %}
+      <span class="team-picker-card__placeholder">NBA</span>
+    {% endif %}
+  </div>
+
+  <div class="team-picker-card__details">
+    {% if fields.field_abbreviation.content %}
+      <p class="team-picker-card__abbreviation">
+        {{ fields.field_abbreviation.content }}
+      </p>
+    {% endif %}
+
+    <h3 class="team-picker-card__name">
+      {{ fields.title.content }}
+    </h3>
+  </div>
+
+  <span class="team-picker-card__arrow" aria-hidden="true">
+    ↗
+  </span>
+
+</article>

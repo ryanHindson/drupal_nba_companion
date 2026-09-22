@@ -1,0 +1,75 @@
+<nav class="nba-nav" aria-label="Site navigation">
+
+  <a
+    class="nba-nav__button nba-nav__button--back"
+    href="{{ home_url }}"
+    data-nba-back
+  >
+    <span aria-hidden="true">←</span>
+    <span>Back</span>
+  </a>
+
+  <a class="nba-nav__brand" href="{{ home_url }}">
+    NBA Companion
+  </a>
+
+  <div class="nba-nav__actions">
+
+    <details class="nba-nav__search">
+      <summary
+        class="nba-nav__button nba-nav__search-toggle"
+        aria-label="Find a player"
+      >
+        <svg
+          width="19"
+          height="19"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="10.8" cy="10.8" r="6.8"></circle>
+          <path d="m16 16 5 5"></path>
+        </svg>
+      </summary>
+
+      <div class="nba-nav__search-panel">
+        <div class="nba-nav__panel-heading">
+          <span>Find a Player</span>
+        </div>
+
+        {{ player_search }}
+      </div>
+    </details>
+
+    <details class="nba-nav__menu">
+      <summary
+        class="nba-nav__button nba-nav__menu-toggle"
+        aria-label="Choose a team"
+      >
+        <span class="nba-nav__menu-label">Teams</span>
+
+        <span class="nba-nav__hamburger" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </summary>
+
+      <div class="nba-nav__panel">
+        <div class="nba-nav__panel-heading">
+          <span>Choose a Team</span>
+          <a href="{{ home_url }}">Home</a>
+        </div>
+
+        {{ team_menu }}
+      </div>
+    </details>
+
+  </div>
+
+</nav>

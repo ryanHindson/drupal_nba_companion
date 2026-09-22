@@ -9,3 +9,6 @@ global:
       css/theme.css: {}
       css/team.css: {}
       css/player.css: {}
+      css/home.css: {}
+      css/nav.css: {}
+      css/player-finder.css: {}

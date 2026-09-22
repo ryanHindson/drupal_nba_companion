@@ -1,0 +1,334 @@
+/**
+ * @file
+ * NBA Companion front page.
+ */
+
+.home-page main {
+  width: min(
+    calc(100% - 2rem),
+    var(--nba-content-width)
+  );
+  margin-inline: auto;
+  padding-block: 2rem 5rem;
+}
+
+/* Hero */
+
+.home-hero {
+  position: relative;
+  display: grid;
+  min-height: 28rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  overflow: hidden;
+  padding: clamp(2rem, 6vw, 5rem);
+  border: 1px solid var(--nba-color-border);
+  border-radius: var(--nba-radius-large);
+  background:
+    radial-gradient(
+      circle at 78% 40%,
+      rgb(255 90 31 / 18%),
+      transparent 26rem
+    ),
+    linear-gradient(125deg, #171d28, #090b10 70%);
+  box-shadow: var(--nba-shadow);
+}
+
+.home-hero::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.4rem;
+  background: var(--nba-color-accent);
+  content: "";
+}
+
+.home-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.home-hero__eyebrow,
+.home-teams__eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--nba-color-accent);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.home-hero h1 {
+  margin-bottom: 1.5rem;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-style: italic;
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+}
+
+.home-hero__description {
+  max-width: 36rem;
+  margin-bottom: 2rem;
+  color: var(--nba-color-text-muted);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+.home-hero__description .field {
+  margin: 0;
+}
+
+.home-hero__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--nba-radius-small);
+  color: #fff;
+  background: var(--nba-color-accent);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.home-hero__link:hover,
+.home-hero__link:focus-visible {
+  color: #fff;
+  background: var(--nba-color-accent-hover);
+}
+
+.home-hero__graphic {
+  display: grid;
+  width: clamp(9rem, 22vw, 19rem);
+  aspect-ratio: 1;
+  align-content: center;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgb(255 90 31 / 14%),
+      rgb(255 90 31 / 2%) 65%,
+      transparent 66%
+    );
+  text-align: center;
+}
+
+.home-hero__graphic span {
+  font-family: var(--nba-font-display);
+  font-size: clamp(5rem, 13vw, 11rem);
+  font-style: italic;
+  font-weight: 900;
+  line-height: 0.9;
+}
+
+.home-hero__graphic small {
+  color: var(--nba-color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Teams section */
+
+.home-teams {
+  min-width: 0;
+  scroll-margin-top: 6rem;
+}
+
+.home-teams__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--nba-color-border);
+}
+
+.home-teams__heading h2 {
+  margin: 0;
+}
+
+.home-teams__heading > p {
+  margin: 0;
+  color: var(--nba-color-text-muted);
+  font-size: 0.85rem;
+}
+
+.home-page .region-content {
+  width: 100%;
+  min-width: 0;
+}
+
+/*
+ * The Teams View must use Format: Unformatted list.
+ * CSS controls how many columns fit at each screen width.
+ */
+
+.home-page .view-teams {
+  min-width: 0;
+}
+
+.home-page .view-teams .view-content {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 18rem), 1fr)
+  );
+  gap: 1rem;
+}
+
+.home-page .view-teams .view-content > .views-row {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.home-page .view-teams .view-content > .views-row:hover {
+  transform: none;
+}
+
+/* Team cards */
+
+.team-picker-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 12rem;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--nba-color-border);
+  border-radius: var(--nba-radius-medium);
+  background:
+    linear-gradient(
+      145deg,
+      rgb(255 255 255 / 4%),
+      transparent 50%
+    ),
+    var(--nba-color-surface);
+  transition:
+    border-color var(--nba-transition),
+    background var(--nba-transition),
+    transform var(--nba-transition);
+}
+
+.team-picker-card:hover,
+.team-picker-card:focus-within {
+  border-color: var(--nba-color-accent);
+  background-color: var(--nba-color-surface-raised);
+  transform: translateY(-3px);
+}
+
+.team-picker-card__logo {
+  display: grid;
+  width: 5.5rem;
+  min-width: 5.5rem;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0.5rem;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 4%);
+}
+
+.team-picker-card__logo .field {
+  margin: 0;
+}
+
+.team-picker-card__logo img {
+  max-width: 100%;
+  max-height: 4.5rem;
+  object-fit: contain;
+}
+
+.team-picker-card__placeholder {
+  color: var(--nba-color-accent);
+  font-family: var(--nba-font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.team-picker-card__details {
+  min-width: 0;
+}
+
+.team-picker-card__abbreviation {
+  margin: 0 0 0.3rem;
+  color: var(--nba-color-accent);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.team-picker-card__name {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.1;
+}
+
+.team-picker-card__name a {
+  color: var(--nba-color-text);
+  text-decoration: none;
+}
+
+.team-picker-card__name a::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.team-picker-card__name a:hover,
+.team-picker-card__name a:focus-visible {
+  color: #fff;
+}
+
+.team-picker-card__arrow {
+  margin-left: auto;
+  color: var(--nba-color-accent);
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+/* Responsive layout */
+
+@media (max-width: 800px) {
+  .home-hero__graphic {
+    display: none;
+  }
+
+  .home-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .home-teams__heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .home-page main {
+    width: min(
+      calc(100% - 1rem),
+      var(--nba-content-width)
+    );
+  }
+
+  .home-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .team-picker-card {
+    min-height: 9rem;
+  }
+}
