@@ -12,3 +12,5 @@ global:
       css/home.css: {}
       css/nav.css: {}
       css/player-finder.css: {}
+  js:
+    js/nav.js: {}
